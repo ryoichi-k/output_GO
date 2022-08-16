@@ -105,3 +105,20 @@ func main() {
 	}
 }
 ```
+### defer
+defer ステートメントは、 defer へ渡した関数の実行を、呼び出し元の関数の終わり(returnする)まで遅延させるものです。
+
+defer へ渡した関数の引数は、すぐに評価されますが、その関数自体は呼び出し元の関数がreturnするまで実行されません。
+
+```go
+func main() {
+	defer fmt.Println("world")
+
+	fmt.Println("hello")
+}
+
+
+//実行結果
+//hello
+//world
+```
