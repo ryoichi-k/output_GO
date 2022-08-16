@@ -122,3 +122,39 @@ func main() {
 //hello
 //world
 ```
+
+defer へ渡した関数が複数ある場合、その呼び出しはスタック( stack )されます。 呼び出し元の関数がreturnするとき、 defer へ渡した関数は LIFO(last-in-first-out) の順番で実行されます。
+```go
+for i := 0; i < 10; i++ {
+	defer fmt.Println(i)
+}
+```
+
+### gomod
+```go
+module golang_app/app_1
+
+go 1.18
+
+require gopkg.in/go-ini/ini.v1 v1.66.6
+
+require github.com/google/uuid v1.3.0
+
+require (
+	github.com/mattn/go-sqlite3 v1.14.14
+	github.com/stretchr/testify v1.8.0 // indirect
+)
+```
+
+
+### config.ini
+```go
+[web]
+port = 8080
+logfile = webapp.log
+static = app/views
+
+[db]
+driver = sqlite3
+name = webapp.sql
+```
