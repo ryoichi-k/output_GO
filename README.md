@@ -158,3 +158,38 @@ static = app/views
 driver = sqlite3
 name = webapp.sql
 ```
+
+
+### structs
+＝フィールド( field )の集まり
+```
+type Vertex struct {
+	X int
+	Y int
+}
+
+func main() {
+	fmt.Println(Vertex{1, 2})
+}
+
+```
+
+structのフィールドは、ドット( . )を用いてアクセス
+
+```
+func main() {
+	v := Vertex{1, 2}
+	v.X = 4
+	fmt.Println(v.X)
+}
+```
+
+structのフィールドは、structのポインタを通してアクセスすることもできます。
+↓の場合、ポインタはv、p.Xでフィールドにアクセス
+
+```
+v := Vertex{1, 2}
+	p := &v
+	p.X = 1e9
+	fmt.Println(v)
+```
