@@ -162,7 +162,7 @@ name = webapp.sql
 
 ### structs
 ＝フィールド( field )の集まり
-```
+```go
 type Vertex struct {
 	X int
 	Y int
@@ -176,7 +176,7 @@ func main() {
 
 structのフィールドは、ドット( . )を用いてアクセス
 
-```
+```go
 func main() {
 	v := Vertex{1, 2}
 	v.X = 4
@@ -187,9 +187,45 @@ func main() {
 structのフィールドは、structのポインタを通してアクセスすることもできます。
 ↓の場合、ポインタはv、p.Xでフィールドにアクセス
 
-```
+```go
 v := Vertex{1, 2}
 	p := &v
 	p.X = 1e9
 	fmt.Println(v)
+```
+
+### 配列
+
+以下は、intの10個の配列aを宣言
+配列の長さは、型の一部分です。ですので、配列のサイズを変えることはできません。
+var a [10]int
+var 変数名 [長さ]型 = [大きさ]型{初期値1, 初期値n}
+var arr[2] string = [2]string {"Golang", "Java"}
+配列に要素を代入
+a[0] = "Hello"
+a[1] = "World"
+
+```go
+primes := [6]int{2, 3, 5, 7, 11, 13}
+fmt.Println(primes)
+出力結果
+[2 3 5 7 11 13]
+```
+
+### スライス
+ライスは可変長です。より柔軟な配列と見なすこともできます。 実際には、スライスは配列よりもより一般的
+→よく使う
+
+① var 変数名 []型
+② var 変数名 []型 = []型{初期値1, ..., 初期値n}
+型 []T は 型 T のスライスを表します。
+//配列(またはスライス)のstartから(end - 1)を取り出す事でスライスを作成する。
+```go
+var s []int = primes[1:4]
+
+var a [10]int
+a[0:10]
+a[:10]
+a[0:]
+a[:]
 ```
